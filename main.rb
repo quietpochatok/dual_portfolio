@@ -23,7 +23,7 @@ amount_usd = gets.to_f
 puts "Сколько у вас рублей?"
 amount_rub = gets.to_f
 
-rate_value = ParserSite.parsing_rate_value_from_cbr.join.tr(',', '.').to_f
+rate_value = ParserSite.parsing_rate_value_from_cbr
 
 puts "Kурс доллара составляет #{rate_value} рублей за 1 доллар"
 

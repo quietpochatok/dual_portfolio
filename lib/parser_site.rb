@@ -14,8 +14,9 @@ module ParserSite
 
     doc = REXML::Document.new(response.body)
 
-    rate_value = doc.get_elements('//Valute[@ID="R01235"]').map do |data_element|
-      value = data_element.get_text('Value')
-    end
+    rate_value =
+      doc.get_elements('//Valute[@ID="R01235"]').map { |data_element|
+        value = data_element.get_text('Value')
+    }.join.tr(',', '.').to_f
   end
 end

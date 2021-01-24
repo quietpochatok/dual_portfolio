@@ -17,6 +17,6 @@ module ParserSite
     rate_value =
       doc.get_elements('//Valute[@ID="R01235"]').map { |data_element|
         value = data_element.get_text('Value')
-    }.join.tr(',', '.').to_f
+      }.join.tr(',', '.').to_f
   end
 end

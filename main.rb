@@ -23,7 +23,15 @@ amount_usd = gets.to_f
 puts "Сколько у вас рублей?"
 amount_rub = gets.to_f
 
-rate_value = ParserSite.parsing_rate_value_from_cbr
+puts "Выберите источник курса рубля в доллару:
+        1. Из сайта ЦентроБанка
+        2. Ручной ввод с клавиатуры"
+
+user_choice = gets.to_i
+
+rate_value =
+
+  user_choice == 1 ? ParserSite.parsing_rate_value_from_cbr : gets.to_f
 
 puts "Kурс доллара составляет #{rate_value} рублей за 1 доллар"
 

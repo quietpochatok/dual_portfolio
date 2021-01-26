@@ -1,4 +1,14 @@
 require_relative "lib/parser_site.rb"
+require 'open-uri'
+
+# проверка интернет соединени
+def internet_connection?
+  begin
+    true if URI.open("http://www.google.com/")
+  rescue
+    false
+  end
+end
 
 # Бивалютный портфель
 def compare_values(sum_usd, amount_rub, rate_value)
@@ -23,15 +33,14 @@ amount_usd = gets.to_f
 puts "Сколько у вас рублей?"
 amount_rub = gets.to_f
 
-puts "Выберите источник курса рубля в доллару:
-        1. Из сайта ЦентроБанка
-        2. Ручной ввод с клавиатуры"
-
-user_choice = gets.to_i
-
 rate_value =
 
-  user_choice == 1 ? ParserSite.parsing_rate_value_from_cbr : gets.to_f
+  if internet_connection? == true
+    ParserSite.parsing_rate_value_from_cbr
+  else
+    puts "Интернет-соединение отсуствуют, введите курса рубля к доллару:"
+    gets.to_f
+  end
 
 puts "Kурс доллара составляет #{rate_value} рублей за 1 доллар"
 

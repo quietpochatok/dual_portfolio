@@ -35,7 +35,7 @@ amount_rub = gets.to_f
 
 rate_value =
 
-  if internet_connection? == true
+  if internet_connection?
     ParserSite.parsing_rate_value_from_cbr
   else
     puts "Интернет-соединение отсуствуют, введите курса рубля к доллару:"
